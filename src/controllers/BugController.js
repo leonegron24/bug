@@ -20,7 +20,7 @@ export class BugController extends BaseController{
             const bug = request.body
             const userInfo = request.userInfo
             console.log(userInfo)
-            bug.creatorId = userInfo._id
+            bug.creatorId = userInfo.id
             const createBug = await bugService.createBug(bug)
             response.send(bug)
         } catch (error) {

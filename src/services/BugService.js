@@ -4,6 +4,7 @@ class BugService{
 
     async createBug(bug) {
         const createBug = await dbContext.Bugs.create(bug)
+        createBug.populate('creator')
         return createBug
     }
 
