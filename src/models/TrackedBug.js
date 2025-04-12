@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { ValueSchema } from "./Value.js";
+
 
 export const TrackedBugSchema = new Schema(
     {
@@ -9,14 +9,14 @@ export const TrackedBugSchema = new Schema(
     { timestamps: true, toJSON: { virtuals: true } }
 )
 
-ValueSchema.virtual('tracker', {
+TrackedBugSchema.virtual('tracker', {
   localField: 'accountId',
   foreignField: '_id',
   justOne: true,
   ref: 'Account'
 })
 
-ValueSchema.virtual('bug', {
+TrackedBugSchema.virtual('bug', {
     localField: 'bugId',
     foreignField: '_id',
     justOne: true,

@@ -1,5 +1,4 @@
 import { Schema } from "mongoose";
-import { ValueSchema } from "./Value.js";
 
 export const NoteSchema = new Schema(
     {
@@ -10,15 +9,8 @@ export const NoteSchema = new Schema(
     { timestamps: true, toJSON: {virtuals: true} }
 )
 
-ValueSchema.virtual('bug', {
-    localField: 'bugId',
-    foreignField: '_id',
-    justOne: true,
-    ref: 'Bug'
-})
-
-ValueSchema.virtual('creator', {
-    localField: 'creator',
+NoteSchema.virtual('creator', {
+    localField: 'creatorId',
     foreignField: '_id',
     justOne: true,
     ref: 'Account'
